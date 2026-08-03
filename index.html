@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>HHD Picking Tool</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+:root{--bg:#0f0f1a;--surface:#1a1a2e;--surface2:#252540;--accent:#4f8ef7;--accent2:#00d4aa;--warn:#f7a34f;--danger:#f75f5f;--success:#4fd97e;--text:#e8e8f0;--muted:#8888aa;--border:#2a2a45;--radius:14px}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center}
+.screen{display:none;width:100%;max-width:480px;padding:24px 20px;flex-direction:column;gap:20px}
+.screen.active{display:flex}
+.logo{text-align:center;padding:32px 0 8px}
+.logo .icon{width:72px;height:72px;background:linear-gradient(135deg,#4f8ef7 0%,#00d4aa 100%);border-radius:20px;display:inline-flex;align-items:center;justify-content:center;font-size:36px;margin-bottom:12px}
+.logo h1{font-size:22px;font-weight:700}
+.logo p{color:var(--muted);font-size:13px;margin-top:4px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px}
+label{font-size:13px;color:var(--muted);display:block;margin-bottom:8px;font-weight:500;text-transform:uppercase;letter-spacing:0.5px}
+input[type="text"]{width:100%;background:var(--bg);border:2px solid var(--border);border-radius:10px;color:var(--text);font-size:20px;padding:14px 16px;outline:none;transition:border-color 0.2s;font-weight:600;letter-spacing:1px}
+input:focus{border-color:var(--accent)}
+.btn{width:100%;padding:16px;border-radius:12px;border:none;font-size:17px;font-weight:700;cursor:pointer;transition:opacity 0.15s,transform 0.1s}
+.btn:active{transform:scale(0.97)}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-ghost{background:var(--surface2);color:var(--text)}
+.btn:disabled{opacity:0.4;cursor:not-allowed}
+.progress-wrap{background:var(--surface2);border-radius:8px;height:10px;overflow:hidden}
+.progress-bar{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:8px;transition:width 0.5s ease}
+.progress-info{display:flex;justify-content:space-between;align-items:center}
+.progress-info span{font-size:13px;color:var(--muted)}
+.progress-info strong{font-size:18px;font-weight:700;color:var(--accent2)}
+.pick-card{background:var(--surface2);border:2px solid var(--accent);border-radius:var(--radius);padding:24px 20px;text-align:center;position:relative;overflow:hidden}
+.pick-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2))}
+.pick-seq{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
+.pick-location{background:var(--bg);border-radius:10px;padding:12px 16px;margin-bottom:16px;display:flex;align-items:center;gap:12px}
+.loc-icon{font-size:28px}.loc-text{text-align:left}
+.loc-label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px}
+.loc-val{font-size:26px;font-weight:800;color:var(--warn);letter-spacing:2px;font-family:'Courier New',monospace}
+.pick-wsn-label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px}
+.pick-wsn-val{font-size:32px;font-weight:900;color:var(--text);letter-spacing:3px;font-family:'Courier New',monospace;margin-bottom:16px}
+.scan-wrap{position:relative}
+.scan-wrap input{padding-right:52px;font-family:'Courier New',monospace}
+.scan-btn{position:absolute;right:6px;top:50%;transform:translateY(-50%);background:var(--accent);border:none;border-radius:8px;width:40px;height:40px;font-size:20px;cursor:pointer;color:#fff;display:flex;align-items:center;justify-content:center}
+.alert{padding:14px 16px;border-radius:10px;font-size:14px;font-weight:600;display:none;align-items:center;gap:10px}
+.alert.show{display:flex}
+.alert-error{background:rgba(247,95,95,0.15);border:1px solid var(--danger);color:var(--danger)}
+.alert-warn{background:rgba(247,163,79,0.15);border:1px solid var(--warn);color:var(--warn)}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:6px 12px;font-size:12px;color:var(--muted);display:flex;align-items:center;gap:6px}
+.chip strong{color:var(--text);font-size:14px}
+.done-anim{font-size:72px;text-align:center;padding:24px 0 12px;animation:pop 0.5s cubic-bezier(0.2,1.5,0.5,1)}
+@keyframes pop{from{transform:scale(0);opacity:0}to{transform:scale(1);opacity:1}}
+.done-title{font-size:26px;font-weight:800;text-align:center}
+.done-sub{font-size:14px;color:var(--muted);text-align:center}
+.divider{height:1px;background:var(--border)}
+.gen-info{font-size:11px;color:var(--muted);text-align:center}
+</style>
+</head>
+<body>
+<div class="screen active" id="screen-login">
+  <div class="logo">
+    <div class="icon">&#128230;</div>
+    <h1>HHD Picking Tool</h1>
+    <p>RC Lite - Manual Picking</p>
+  </div>
+  <div class="card">
+    <label for="empInput">Employee ID</label>
+    <input type="text" id="empInput" placeholder="Enter Employee ID" autocomplete="off" spellcheck="false">
+  </div>
+  <div class="alert alert-error" id="loginAlert"><span>&#9888;</span><span id="loginAlertMsg"></span></div>
+  <button class="btn btn-primary" id="loginBtn" onclick="doLogin()">Start Picking Session</button>
+  <p class="gen-info">Last updated: 3/8/2026, 12:21:23 pm</p>
+</div>
+
+<div class="screen" id="screen-pick">
+  <div class="chips">
+    <div class="chip">&#128100; <strong id="chipEmp">-</strong></div>
+    <div class="chip">&#10003; <strong id="chipPicked">0</strong> picked</div>
+  </div>
+  <div>
+    <div class="progress-info" style="margin-bottom:8px">
+      <span>Progress</span><strong id="progressLabel">0 / 0</strong>
+    </div>
+    <div class="progress-wrap"><div class="progress-bar" id="progressBar" style="width:0%"></div></div>
+  </div>
+  <div class="pick-card" id="pickCard">
+    <div class="pick-seq" id="pickSeq">ITEM 1 OF 0</div>
+    <div class="pick-location">
+      <div class="loc-icon">&#128205;</div>
+      <div class="loc-text">
+        <div class="loc-label">Go to location</div>
+        <div class="loc-val" id="pickLocation">-</div>
+      </div>
+    </div>
+    <div class="pick-wsn-label">Scan or type WSN</div>
+    <div class="pick-wsn-val" id="pickWSN">-</div>
+    <div class="scan-wrap">
+      <input type="text" id="scanInput" placeholder="Scan WSN here..." autocomplete="off" spellcheck="false" onkeydown="if(event.key==='Enter')confirmScan()">
+      <button class="scan-btn" onclick="confirmScan()">&#8594;</button>
+    </div>
+  </div>
+  <div class="alert" id="pickAlert"><span id="pickAlertIcon">&#9888;</span><span id="pickAlertMsg"></span></div>
+  <button class="btn btn-ghost" onclick="skipWSN()" style="font-size:14px;padding:12px">Skip this WSN (flag for review)</button>
+</div>
+
+<div class="screen" id="screen-done">
+  <div class="done-anim">&#10024;</div>
+  <div class="done-title">All WSNs Picked!</div>
+  <div class="done-sub" id="doneSub">Session complete</div>
+  <div class="divider"></div>
+  <div class="card" id="doneStats"></div>
+  <button class="btn btn-primary" onclick="resetApp()">Start New Session</button>
+</div>
+
+<script>
+const DB = {"3900117":[{"wsn":"2SU4LD_V","location":"GRD1009B1"},{"wsn":"2ST6RO_N","location":"GRD1009B1"},{"wsn":"2U2DA1_V","location":"GRD1015D3"},{"wsn":"2SHG7V_N","location":"GRD1018D5"},{"wsn":"2TVWDE_X","location":"GRD1031C3"},{"wsn":"2PB6UD_H","location":"GRD1037A1"},{"wsn":"2T9AX9_R","location":"GRD1037A1"}]};
+let picked = {};
+let state = {empId:'',total:0,pickedCount:0,currentWSN:'',currentLocation:'',startTime:null,skipped:[],pickedList:[]};
+
+function showScreen(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById('screen-'+id).classList.add('active')}
+function showAlert(elId,msg,type){const el=document.getElementById(elId);el.className='alert alert-'+type+' show';if(elId==='pickAlert'){document.getElementById('pickAlertIcon').textContent=type==='error'?'X':'!';document.getElementById('pickAlertMsg').textContent=msg}else{document.getElementById(elId+'Msg').textContent=msg}}
+function hideAlert(elId){document.getElementById(elId).classList.remove('show')}
+function updateProgress(){const pct=state.total>0?(state.pickedCount/state.total*100):0;document.getElementById('progressBar').style.width=pct+'%';document.getElementById('progressLabel').textContent=state.pickedCount+' / '+state.total;document.getElementById('chipPicked').textContent=state.pickedCount}
+
+function doLogin(){
+  const empId=document.getElementById('empInput').value.trim();
+  if(!empId){showAlert('loginAlert','Please enter your Employee ID','error');return}
+  const list=DB[empId];
+  if(!list||list.length===0){showAlert('loginAlert','No WSNs assigned to Employee: '+empId,'error');return}
+  hideAlert('loginAlert');
+  state={empId,total:list.length,pickedCount:0,currentWSN:'',currentLocation:'',startTime:Date.now(),skipped:[],pickedList:[]};
+  picked={};
+  document.getElementById('chipEmp').textContent=empId;
+  updateProgress();
+  showScreen('pick');
+  loadNext();
+}
+
+function loadNext(){
+  const list=DB[state.empId];
+  const next=list.find(i=>!picked[i.wsn]);
+  if(!next){showDone();return}
+  state.currentWSN=next.wsn;
+  state.currentLocation=next.location;
+  document.getElementById('pickLocation').textContent=next.location;
+  document.getElementById('pickWSN').textContent=next.wsn;
+  document.getElementById('pickSeq').textContent='ITEM '+(state.pickedCount+1)+' OF '+state.total;
+  document.getElementById('scanInput').value='';
+  document.getElementById('scanInput').focus();
+  hideAlert('pickAlert');
+}
+
+function confirmScan(){
+  const scanned=document.getElementById('scanInput').value.trim().toUpperCase();
+  const expected=state.currentWSN.toUpperCase();
+  if(!scanned){showAlert('pickAlert','Please scan or enter the WSN','warn');return}
+  if(scanned!==expected){showAlert('pickAlert','Wrong WSN! Expected: '+state.currentWSN,'error');document.getElementById('scanInput').value='';document.getElementById('scanInput').focus();return}
+  picked[state.currentWSN]=true;
+  state.pickedCount++;
+  state.pickedList.push({wsn:state.currentWSN,location:state.currentLocation,time:new Date().toLocaleTimeString('en-IN')});
+  updateProgress();
+  loadNext();
+}
+
+function skipWSN(){
+  if(!confirm('Skip WSN: '+state.currentWSN+'?\nThis will be flagged for review.'))return;
+  state.skipped.push({wsn:state.currentWSN,location:state.currentLocation});
+  picked[state.currentWSN]='skipped';
+  loadNext();
+}
+
+function showDone(){
+  const elapsed=Math.round((Date.now()-state.startTime)/1000);
+  const mins=Math.floor(elapsed/60),secs=elapsed%60;
+  document.getElementById('doneSub').textContent='Employee: '+state.empId;
+  let rows=state.pickedList.map(p=>'<tr><td style="padding:4px 8px;font-family:monospace;font-size:12px">'+p.wsn+'</td><td style="padding:4px 8px;font-size:12px">'+p.location+'</td><td style="padding:4px 8px;font-size:12px;color:var(--muted)">'+p.time+'</td></tr>').join('');
+  document.getElementById('doneStats').innerHTML=
+    '<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;text-align:center;margin-bottom:16px">'+
+    '<div><div style="font-size:32px;font-weight:800;color:var(--success)">'+state.pickedCount+'</div><div style="font-size:12px;color:var(--muted)">WSNs Picked</div></div>'+
+    '<div><div style="font-size:32px;font-weight:800;color:var(--accent)">'+mins+'m '+secs+'s</div><div style="font-size:12px;color:var(--muted)">Time Taken</div></div>'+
+    (state.skipped.length>0?'<div style="grid-column:1/-1"><div style="font-size:24px;font-weight:800;color:var(--warn)">'+state.skipped.length+'</div><div style="font-size:12px;color:var(--muted)">Skipped</div></div>':'')+
+    '</div>'+
+    '<div style="overflow-x:auto"><table style="width:100%;border-collapse:collapse"><tr style="color:var(--muted)"><th style="padding:4px 8px;text-align:left;font-size:11px">WSN</th><th style="padding:4px 8px;text-align:left;font-size:11px">Location</th><th style="padding:4px 8px;text-align:left;font-size:11px">Time</th></tr>'+rows+'</table></div>';
+  showScreen('done');
+  setTimeout(()=>alert('PICKING COMPLETE!\n\nEmployee: '+state.empId+'\nPicked: '+state.pickedCount+' WSNs\nTime: '+mins+'m '+secs+'s'),400);
+}
+
+function resetApp(){
+  state={empId:'',total:0,pickedCount:0,currentWSN:'',currentLocation:'',startTime:null,skipped:[],pickedList:[]};
+  picked={};
+  document.getElementById('empInput').value='';
+  hideAlert('loginAlert');
+  showScreen('login');
+}
+
+document.getElementById('empInput').addEventListener('keydown',e=>{if(e.key==='Enter')doLogin()});
+</script>
+</body>
+</html>
