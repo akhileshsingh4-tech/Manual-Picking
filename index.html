@@ -68,7 +68,7 @@ input:focus{border-color:var(--accent)}
   </div>
   <div class="alert alert-error" id="loginAlert"><span>&#9888;</span><span id="loginAlertMsg"></span></div>
   <button class="btn btn-primary" id="loginBtn" onclick="doLogin()">Start Picking Session</button>
-  <p class="gen-info">Last updated: 10/8/2026, 12:04:05 pm</p>
+  <p class="gen-info">Last updated: 12/8/2026, 10:59:47 am</p>
 </div>
 
 <div class="screen" id="screen-pick">
@@ -112,7 +112,7 @@ input:focus{border-color:var(--accent)}
 </div>
 
 <script>
-const DB = {"3935197":[{"wsn":"2SO219_X","location":"GRD1107D1"},{"wsn":"2V8DAU_P","location":"GRD1107D1"},{"wsn":"2UI5JF_Z","location":"GRD1107D1"},{"wsn":"2TP0O8_L","location":"GRD1107D1"},{"wsn":"2S7ZN1_X","location":"GRD1107D1"},{"wsn":"2UYTZY_F","location":"GRD1107D1"},{"wsn":"2V7NY4_D","location":"GRD1107D3"},{"wsn":"2V0OT2_L","location":"GRD1111D3"},{"wsn":"2UYE5G_X","location":"GRD1121D1"},{"wsn":"2UZHQ1_N","location":"GRD1121D1"},{"wsn":"2TW24T_L","location":"GRD1121D1"},{"wsn":"2VEUEC_B","location":"GRD1121D1"},{"wsn":"2UQX9N_B","location":"GRD1121D1"},{"wsn":"2V7K6H_L","location":"GRD1121D1"},{"wsn":"2UYWSJ_T","location":"GRD1121D3"},{"wsn":"2URI85_T","location":"GRD1122D7"},{"wsn":"2V6W1U_H","location":"GRD1122D7"},{"wsn":"2UOK2E_R","location":"GRD1122D7"}]};
+const DB = {"3358937":[{"wsn":"2VDWO1_B","location":"GRD1010D7"},{"wsn":"2TWAKV_P","location":"GRD1010D7"},{"wsn":"2VMRB8_N","location":"GRD1019B1"},{"wsn":"2V6Z17_H","location":"GRD1021C1"},{"wsn":"2VL156_X","location":"GRD1021C7"},{"wsn":"2VESSU_B","location":"GRD1021D6"},{"wsn":"2UZQXK_D","location":"GRD1022C3"},{"wsn":"2UIFH0_H","location":"GRD1046B1"},{"wsn":"2QGBWJ_N","location":"GRD1046D1"},{"wsn":"2UIZL8_P","location":"GRD1046D1"},{"wsn":"2V7JNP_H","location":"GRD1046D1"},{"wsn":"2W1DB3_H","location":"GRD1046D5"},{"wsn":"2W317O_F","location":"GRD1046D5"},{"wsn":"2VUHMC_F","location":"GRD1046D5"},{"wsn":"2TWL99_R","location":"GRD1046D5"},{"wsn":"2VMF0J_P","location":"GRD1046D6"},{"wsn":"2QA3BB_V","location":"GRD1132D5"},{"wsn":"2VDP16_V","location":"GRD1139C5"},{"wsn":"2VTJ07_B","location":"GRD1139C5"},{"wsn":"2VMZUN_V","location":"GRD1139C5"},{"wsn":"2UQJO9_T","location":"GRD1143C2"}]};
 let picked = {};
 let state = {empId:'',total:0,pickedCount:0,currentWSN:'',currentLocation:'',startTime:null,skipped:[],pickedList:[]};
 
