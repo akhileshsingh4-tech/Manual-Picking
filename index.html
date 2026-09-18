@@ -68,7 +68,7 @@ input:focus{border-color:var(--accent)}
   </div>
   <div class="alert alert-error" id="loginAlert"><span>&#9888;</span><span id="loginAlertMsg"></span></div>
   <button class="btn btn-primary" id="loginBtn" onclick="doLogin()">Start Picking Session</button>
-  <p class="gen-info">Last updated: 18/9/2026, 9:08:55 am</p>
+  <p class="gen-info">Last updated: 18/9/2026, 10:37:18 am</p>
 </div>
 
 <div class="screen" id="screen-pick">
@@ -112,7 +112,7 @@ input:focus{border-color:var(--accent)}
 </div>
 
 <script>
-const DB = {"3876189":[{"wsn":"2WYOE0_N","location":"GRD1010D1"},{"wsn":"33I5JN_N","location":"GRD1045D4"},{"wsn":"33QPMF_P","location":"GRD1129D5"},{"wsn":"33XINM_H","location":"GRD1129D5"},{"wsn":"33XWY2_H","location":"GRD1129D7"},{"wsn":"3394CW_L","location":"GRD1131D4"},{"wsn":"34BJTB_R","location":"GRD1131D6"},{"wsn":"33ACOU_R","location":"GRD1134D7"}]};
+const DB = {"3900117":[{"wsn":"32O485_D","location":"FRD1001D2"},{"wsn":"33KU6E_N","location":"FRD1001D2"},{"wsn":"2XGWSR_V","location":"FRD1001D2"},{"wsn":"334F5F_T","location":"GRD1045D3"},{"wsn":"333HZA_N","location":"GRD1045D3"},{"wsn":"33CHTG_T","location":"GRD1045D4"},{"wsn":"32GR6D_R","location":"GRD1129D5"},{"wsn":"33ZEPD_V","location":"GRD1129D5"},{"wsn":"339RPY_N","location":"GRD1131D4"},{"wsn":"2YUPWZ_V","location":"GRD1158C3"},{"wsn":"32URWB_J","location":"GRD1158C3"},{"wsn":"332X36_T","location":"GRD1160C2"},{"wsn":"32EXKT_X","location":"GRD1160C6"},{"wsn":"33ILA6_X","location":"GRD1160C7"},{"wsn":"33RDVV_V","location":"GRD1165B1"},{"wsn":"31P3TA_D","location":"GRD1165B1"},{"wsn":"3341IM_X","location":"GRD1165C1"},{"wsn":"2ZHUTR_J","location":"GRD1165C2"},{"wsn":"31ZS9P_D","location":"GRD1165C2"},{"wsn":"32KMBE_H","location":"GRD1165C2"},{"wsn":"31QMM1_J","location":"GRD1165C2"},{"wsn":"31YTK2_Z","location":"GRD1166C6"},{"wsn":"33XMBD_T","location":"GRD1166C6"},{"wsn":"33IVCP_R","location":"GRD1166C6"}]};
 let picked = {};
 let state = {empId:'',total:0,pickedCount:0,currentWSN:'',currentLocation:'',startTime:null,skipped:[],pickedList:[]};
 
