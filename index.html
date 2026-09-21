@@ -68,7 +68,7 @@ input:focus{border-color:var(--accent)}
   </div>
   <div class="alert alert-error" id="loginAlert"><span>&#9888;</span><span id="loginAlertMsg"></span></div>
   <button class="btn btn-primary" id="loginBtn" onclick="doLogin()">Start Picking Session</button>
-  <p class="gen-info">Last updated: 21/9/2026, 9:21:20 am</p>
+  <p class="gen-info">Last updated: 21/9/2026, 11:18:06 am</p>
 </div>
 
 <div class="screen" id="screen-pick">
@@ -112,7 +112,7 @@ input:focus{border-color:var(--accent)}
 </div>
 
 <script>
-const DB = {"3899272":[{"wsn":"34VBCH_L","location":"GRD1010D6"},{"wsn":"2UB92D_R","location":"GRD1010D6"},{"wsn":"34C76U_R","location":"GRD1010D6"},{"wsn":"34QMET_L","location":"GRD1024D7"},{"wsn":"31I5BL_P","location":"GRD1041C4"},{"wsn":"34WJTI_T","location":"GRD1042B1"},{"wsn":"34QGS3_T","location":"GRD1042B1"},{"wsn":"34JH15_Z","location":"GRD1042B1"},{"wsn":"351GN1_F","location":"GRD1042D4"},{"wsn":"34UGOP_H","location":"GRD1043B1"},{"wsn":"34AGXF_N","location":"GRD1043B1"},{"wsn":"34VD6C_Z","location":"GRD1170C5"},{"wsn":"34VCBF_X","location":"GRD1170C6"},{"wsn":"34U0SI_B","location":"GRD1170C6"},{"wsn":"351N4Z_D","location":"GRD1170C6"},{"wsn":"352WTK_X","location":"GRD1170C6"},{"wsn":"354CX1_B","location":"GRD1171B1"},{"wsn":"344GS8_L","location":"GRD1171B1"},{"wsn":"34UN5B_X","location":"GRD1171B1"},{"wsn":"34BBAI_H","location":"GRD1171B1"}]};
+const DB = {"3900117":[{"wsn":"34PXUL_X","location":"GRD1010D4"},{"wsn":"2Z8G3X_H","location":"GRD1010D5"},{"wsn":"34QAWI_V","location":"GRD1010D7"},{"wsn":"32FTYZ_B","location":"GRD1010D7"},{"wsn":"2V6EBZ_Z","location":"GRD1024D7"},{"wsn":"33QY3C_D","location":"GRD1024D7"},{"wsn":"346AW9_F","location":"GRD1024D7"},{"wsn":"33R5O4_D","location":"GRD1043D2"},{"wsn":"2VUJO9_T","location":"GRD1044D6"},{"wsn":"34OQ0C_P","location":"GRD1044D6"},{"wsn":"33BFHC_N","location":"GRD1044D6"},{"wsn":"34J6S1_X","location":"GRD1044D6"},{"wsn":"34JVGN_D","location":"GRD1044D6"},{"wsn":"34V0BN_R","location":"GRD1155D7"},{"wsn":"339TZF_F","location":"GRD1170C3"}]};
 let picked = {};
 let state = {empId:'',total:0,pickedCount:0,currentWSN:'',currentLocation:'',startTime:null,skipped:[],pickedList:[]};
 
