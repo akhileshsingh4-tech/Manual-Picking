@@ -68,7 +68,7 @@ input:focus{border-color:var(--accent)}
   </div>
   <div class="alert alert-error" id="loginAlert"><span>&#9888;</span><span id="loginAlertMsg"></span></div>
   <button class="btn btn-primary" id="loginBtn" onclick="doLogin()">Start Picking Session</button>
-  <p class="gen-info">Last updated: 24/10/2026, 3:48:29 pm</p>
+  <p class="gen-info">Last updated: 25/10/2026, 9:41:37 am</p>
 </div>
 
 <div class="screen" id="screen-pick">
@@ -112,7 +112,7 @@ input:focus{border-color:var(--accent)}
 </div>
 
 <script>
-const DB = {"3274824":[{"wsn":"3CCE3Q_T","location":"GRD1025D8"},{"wsn":"3DGIN0_L","location":"GRD1025D8"},{"wsn":"3BUWY9_P","location":"GRD1106B1"},{"wsn":"3CRMYE_R","location":"GRD1106D8"},{"wsn":"3D6GOS_T","location":"GRD1112C1"},{"wsn":"3BREQ7_B","location":"GRD1112D4"},{"wsn":"3C6DMG_H","location":"GRD1112D4"},{"wsn":"3CBZJP_J","location":"GRD1113C1"},{"wsn":"3CRG0Y_H","location":"GRD1116C1"},{"wsn":"3CBWTF_R","location":"GRD1154B1"},{"wsn":"3CC5AL_B","location":"GRD1155B1"},{"wsn":"3DTVVY_N","location":"GRD1161C3"},{"wsn":"3CBSBI_B","location":"GRD1162C6"},{"wsn":"3CC91B_L","location":"GRD1162D2"},{"wsn":"3CZZ5Q_N","location":"GRD1162D2"},{"wsn":"3CAOVH_R","location":"GRD1164D6"},{"wsn":"3D3A88_J","location":"GRD1164D7"},{"wsn":"3ASS55_F","location":"GRD1165C4"},{"wsn":"3C994M_F","location":"GRD1165C4"},{"wsn":"3CNUQP_P","location":"GRD1165C4"},{"wsn":"3DYQ41_X","location":"GRD1166C1"},{"wsn":"3CBXVU_T","location":"GRD1166C1"},{"wsn":"3C9I7E_L","location":"GRD1166C1"},{"wsn":"3CQTGE_T","location":"GRD1166D6"},{"wsn":"3D6BNW_L","location":"GRD1167D5"},{"wsn":"3D3R2E_H","location":"GRD1167D5"},{"wsn":"3DHNT8_B","location":"GRD1167D5"},{"wsn":"3CS8ZF_N","location":"GRD1167D5"},{"wsn":"3DIX4B_R","location":"GRD1167D5"},{"wsn":"3CQJSS_N","location":"GRD1167D5"},{"wsn":"3DGI2C_F","location":"GRD1168D1"},{"wsn":"3D518E_Z","location":"GRD1168D1"},{"wsn":"3D23PY_J","location":"GRD1168D1"},{"wsn":"3EQ7ZV_N","location":"GRD1168D1"},{"wsn":"3CET9Z_H","location":"GRD1168D1"},{"wsn":"3CSUMG_D","location":"GRD1168D1"},{"wsn":"3D4M0S_T","location":"GRD1168D1"},{"wsn":"3C8QYP_L","location":"GRD1169C3"}]};
+const DB = {"3876189":[{"wsn":"3DHSRD_N","location":"GRD1013C1"},{"wsn":"3CRF9I_F","location":"GRD1114D5"},{"wsn":"3D69OJ_F","location":"GRD1114D5"},{"wsn":"3EBQ9G_P","location":"GRD1114D5"},{"wsn":"3D0V9G_R","location":"GRD1114D6"},{"wsn":"3DJ5TR_D","location":"GRD1138C1"},{"wsn":"3DZTAY_P","location":"GRD1140C1"},{"wsn":"3CD5S8_F","location":"GRD1145D4"},{"wsn":"3CQNKT_L","location":"GRD1148C8"}]};
 let picked = {};
 let state = {empId:'',total:0,pickedCount:0,currentWSN:'',currentLocation:'',startTime:null,skipped:[],pickedList:[]};
 
