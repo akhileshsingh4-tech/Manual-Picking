@@ -68,7 +68,7 @@ input:focus{border-color:var(--accent)}
   </div>
   <div class="alert alert-error" id="loginAlert"><span>&#9888;</span><span id="loginAlertMsg"></span></div>
   <button class="btn btn-primary" id="loginBtn" onclick="doLogin()">Start Picking Session</button>
-  <p class="gen-info">Last updated: 29/10/2026, 11:02:11 am</p>
+  <p class="gen-info">Last updated: 30/10/2026, 8:47:49 am</p>
 </div>
 
 <div class="screen" id="screen-pick">
@@ -112,7 +112,7 @@ input:focus{border-color:var(--accent)}
 </div>
 
 <script>
-const DB = {"3935197":[{"wsn":"3DVHOQ_Z","location":"FRD1002D4"},{"wsn":"3CX49F_N","location":"FRD1002D4"},{"wsn":"3DIXN2_H","location":"FRD1003C4"},{"wsn":"3COZIO_D","location":"FRD1003C4"},{"wsn":"3CO7RE_H","location":"FRD1003C4"},{"wsn":"3D251G_J","location":"FRD1003C4"},{"wsn":"3DJ4SF_R","location":"FRD1003C4"},{"wsn":"3ESDZ0_V","location":"FRD1003C4"},{"wsn":"3FB8S8_V","location":"FRD1004B1"}]};
+const DB = {"3274824":[{"wsn":"3EGKI4_T","location":"GRD1024B1"},{"wsn":"3DD5G4_F","location":"GRD1024B1"},{"wsn":"3F81WG_J","location":"GRD1024B1"},{"wsn":"3FCBQ3_T","location":"GRD1026E2"},{"wsn":"3DFYEN_H","location":"GRD1026E3"},{"wsn":"3ETJB2_L","location":"GRD1026E3"},{"wsn":"3ETW0P_V","location":"GRD1028E6"},{"wsn":"3DKDVM_H","location":"GRD1030D2"},{"wsn":"3DYIZG_P","location":"GRD1030D2"},{"wsn":"3D09JB_T","location":"GRD1030E3"},{"wsn":"3FB0B8_B","location":"GRD1030E3"},{"wsn":"3G4GFD_H","location":"GRD1030E4"},{"wsn":"3ED194_F","location":"GRD1030E4"},{"wsn":"3EPGMI_L","location":"GRD1030E4"},{"wsn":"3D66LH_D","location":"GRD1030E5"},{"wsn":"3EE8LQ_N","location":"GRD1030E6"},{"wsn":"3EBUJ9_N","location":"GRD1032B1"},{"wsn":"3EJP6U_H","location":"GRD1032E5"},{"wsn":"3CDFCS_L","location":"GRD1032E6"},{"wsn":"3ETX7B_R","location":"GRD1032E7"},{"wsn":"3EVILO_N","location":"GRD1032E7"},{"wsn":"3DZNQS_L","location":"GRD1032E7"},{"wsn":"3E19CW_D","location":"GRD1032E7"},{"wsn":"3FOC6C_R","location":"GRD1032E7"},{"wsn":"3ETAWV_Z","location":"GRD1034E5"},{"wsn":"3FNT72_F","location":"GRD1036E2"},{"wsn":"3EEP4P_T","location":"GRD1036E2"},{"wsn":"3DW1KY_B","location":"GRD1036E2"},{"wsn":"3DJCX4_P","location":"GRD1040E3"},{"wsn":"3ET4YA_F","location":"GRD1040E4"},{"wsn":"3DI8RA_F","location":"GRD1040E6"},{"wsn":"3FAI58_Z","location":"GRD1041B1"},{"wsn":"3E10CG_X","location":"GRD1041B1"},{"wsn":"3EH1PO_Z","location":"GRD1041B1"},{"wsn":"3ECKC5_N","location":"GRD1046C1"},{"wsn":"3FBH64_X","location":"GRD1047C1"},{"wsn":"3ETC77_R","location":"GRD1139B1"},{"wsn":"3ESA91_J","location":"GRD1148C6"},{"wsn":"3FBOZM_J","location":"GRD1171B1"},{"wsn":"3EF8LW_B","location":"GRD1219C1"},{"wsn":"3FN0A4_T","location":"GRD1219C1"},{"wsn":"3FO2Z6_T","location":"GRD1219C1"},{"wsn":"3F9F8T_F","location":"GRD1220C1"},{"wsn":"3DY8BC_N","location":"GRD1220C1"},{"wsn":"3ER8XN_B","location":"GRD1222C1"},{"wsn":"3EFU3H_H","location":"GRD1222C1"}]};
 let picked = {};
 let state = {empId:'',total:0,pickedCount:0,currentWSN:'',currentLocation:'',startTime:null,skipped:[],pickedList:[]};
 
