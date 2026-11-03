@@ -68,7 +68,7 @@ input:focus{border-color:var(--accent)}
   </div>
   <div class="alert alert-error" id="loginAlert"><span>&#9888;</span><span id="loginAlertMsg"></span></div>
   <button class="btn btn-primary" id="loginBtn" onclick="doLogin()">Start Picking Session</button>
-  <p class="gen-info">Last updated: 2/11/2026, 1:39:44 pm</p>
+  <p class="gen-info">Last updated: 3/11/2026, 9:18:09 am</p>
 </div>
 
 <div class="screen" id="screen-pick">
@@ -112,7 +112,7 @@ input:focus{border-color:var(--accent)}
 </div>
 
 <script>
-const DB = {"3876189":[{"wsn":"3G7EWT_N","location":"FRD1007C1"},{"wsn":"3FRY84_N","location":"FRD1007C1"},{"wsn":"3DV6XA_N","location":"FRD1007C1"},{"wsn":"3DWADK_D","location":"FRD1004D1"},{"wsn":"3COV3U_V","location":"FRD1004D1"},{"wsn":"3DZ184_P","location":"FRD1004D1"},{"wsn":"3DFALY_X","location":"FRD1004D1"},{"wsn":"3EBEH2_N","location":"FRD1004D1"},{"wsn":"3FAH12_V","location":"FRD1004D1"},{"wsn":"3CSQFC_D","location":"FRD1004D1"}]};
+const DB = {"3935197":[{"wsn":"3GNSPA_J","location":"GRD1003A1"},{"wsn":"3FOLGD_H","location":"GRD1003A1"},{"wsn":"3F75YV_T","location":"GRD1003A1"},{"wsn":"3GGBBB_B","location":"GRD1003A1"},{"wsn":"3GH2YM_F","location":"GRD1004A1"},{"wsn":"3FSBU1_B","location":"GRD1021C7"},{"wsn":"3GD97X_N","location":"GRD1021C7"},{"wsn":"3EQE5K_H","location":"GRD1021C7"},{"wsn":"3GUFIQ_V","location":"GRD1021C7"},{"wsn":"3GFU93_D","location":"GRD1021C7"},{"wsn":"3GTHMH_P","location":"GRD1021E4"},{"wsn":"3H2Z8L_N","location":"GRD1021E4"},{"wsn":"3H6UVP_H","location":"GRD1021E6"},{"wsn":"3G5WZX_Z","location":"GRD1023E5"},{"wsn":"3GIWWS_Z","location":"GRD1023E5"},{"wsn":"3GGXEV_B","location":"GRD1023E5"},{"wsn":"3F9SEZ_P","location":"GRD1024E1"},{"wsn":"3EE6QM_T","location":"GRD1024E2"},{"wsn":"3G549R_F","location":"GRD1024E2"},{"wsn":"3GRUP5_N","location":"GRD1024E2"}]};
 let picked = {};
 let state = {empId:'',total:0,pickedCount:0,currentWSN:'',currentLocation:'',startTime:null,skipped:[],pickedList:[]};
 
