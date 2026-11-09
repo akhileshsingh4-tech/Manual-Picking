@@ -68,7 +68,7 @@ input:focus{border-color:var(--accent)}
   </div>
   <div class="alert alert-error" id="loginAlert"><span>&#9888;</span><span id="loginAlertMsg"></span></div>
   <button class="btn btn-primary" id="loginBtn" onclick="doLogin()">Start Picking Session</button>
-  <p class="gen-info">Last updated: 7/11/2026, 10:59:13 am</p>
+  <p class="gen-info">Last updated: 9/11/2026, 12:04:09 pm</p>
 </div>
 
 <div class="screen" id="screen-pick">
@@ -112,7 +112,7 @@ input:focus{border-color:var(--accent)}
 </div>
 
 <script>
-const DB = {"3876189":[{"wsn":"3FBPJP_L","location":"FRD1003E1"},{"wsn":"34455Z_N","location":"FRD1003E1"},{"wsn":"37LF17_Z","location":"FRD1003E1"},{"wsn":"3IFI8G_V","location":"FRD1003E1"},{"wsn":"3AA5DK_D","location":"FRD1003E1"},{"wsn":"3G60C2_P","location":"FRD1003E1"},{"wsn":"3HKD92_P","location":"FRD1003E1"},{"wsn":"3CK4F9_B","location":"FRD1003E1"},{"wsn":"3E0AZ6_L","location":"FRD1003E1"},{"wsn":"3GGA3G_P","location":"FRD1004B1"},{"wsn":"37LGDL_D","location":"FRD1003E1"},{"wsn":"3FOBHF_J","location":"FRD1003E1"},{"wsn":"31HUZN_F","location":"FRD1003E1"},{"wsn":"3H1P2K_L","location":"FRD1004B1"}]};
+const DB = {"3358937":[{"wsn":"3K0NV0_H","location":"GRD1134B1"},{"wsn":"3JEDOA_B","location":"GRD1136D5"},{"wsn":"3K19LW_X","location":"GRD1136D5"},{"wsn":"3K11R9_X","location":"GRD1137D4"},{"wsn":"3HGHC2_H","location":"GRD1138D3"},{"wsn":"3K35JH_H","location":"GRD1138D4"},{"wsn":"3JEGI1_X","location":"GRD1138D4"},{"wsn":"3K9GXA_N","location":"GRD1139B1"},{"wsn":"3JZ3FT_P","location":"GRD1140C1"},{"wsn":"3JLXOE_Z","location":"GRD1155D1"},{"wsn":"3HRY4I_B","location":"GRD1155D4"},{"wsn":"3D0F0R_L","location":"GRD1155D4"},{"wsn":"3HH5NH_R","location":"GRD1155D4"},{"wsn":"3HWBFN_N","location":"GRD1155D4"},{"wsn":"3K1F0S_H","location":"GRD1157E6"},{"wsn":"3K0PFD_D","location":"GRD1157E6"},{"wsn":"3JPNC9_X","location":"GRD1159D3"},{"wsn":"3IQ7YA_B","location":"GRD1168B1"}]};
 let picked = {};
 let state = {empId:'',total:0,pickedCount:0,currentWSN:'',currentLocation:'',startTime:null,skipped:[],pickedList:[]};
 
